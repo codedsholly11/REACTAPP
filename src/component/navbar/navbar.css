@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.one{
+    color: blue;
+    font-size: 30px;
+}
+.all{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@keyframes pisng {
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+.animate-my-ping {
+    animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
