@@ -1,43 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './body.css'
 import brand from '../image/brand.svg'
 import detailed from '../image/detailed.svg'
 import fully from '../image/fully.svg'
-const body = () => {
-    const copy = [
-        // {
-        //     link1 :"tygwiuwiuwiwoygp",
-        //     link2: "jiohpouh2puh2pu2h",
-        //     btn :"Copy"
-        // },
-        // {
-        //     link1 :"u2id2oid2eekek",
-        //     link2: "jiohpouh2puh2pu2h",
-        //     btn :"Copy"
-        // }, {
-        //     link1 :"wi;iowohiwouih",
-        //     link2: "jiohpouh2puh2pu2h",
-        //     btn :"Copy"
-        // },
-    ]
+
+const Body = () => {
+    const [url, setUrl] = useState(null)
+    const [input, setInput] = useState("")
+    const [isClick, setIsclick] = useState(false)
+
+    async function fetchApi(e) {
+            e.preventDefault();
+
+            // if(!url){
+            //     return alert("pls enter url");
+            // }
+
+    try {
+        setIsclick(true)
+            const baseurl = "https://shorturl-ovln.onrender.com/api/v1/shorturl"
+            const response= await fetch (baseurl, {
+                method:"POST",
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ url:input })
+                })
+            .then((res)=>res.json())
+            const returnData = await response.shorturl;
+            console.log(returnData)
+            setUrl(returnData)
+            if(returnData){
+                setIsclick(false)
+            }
+    
+    
+    } catch (error) {
+        console.log(error)
+        setIsclick(false)
+    }
+}
+
+
   return (
-    <div className='flex flex-col overflow-hidden bg-cyan-100 gap-[50px] py-[50px] justify-center items-center pb-[200px] '>
-            <div className='w-[100%] md:w-[70%] flex justify-center items-center md:mt-[80px] mt-[10px] relative md:bottom-[150px]'>
-                <div className='pix bg-no-repeat w-[90%] md:flex-row flex flex-col justify-center items-center gap-[20px] py-[30px] px-[20px] object-top'>
+    <div className='flex flex-col overflow-hidden bg-cyan-100 gap-[50px] py-[50px] justify-center items-center pb-[200px] mt-[30px] '>
+            <div className='w-[100%] md:w-[70%] flex justify-center items-center md:mt-[80px] relative md:bottom-[150px] pt-[50px] '>
+                <form className='pix bg-no-repeat w-[90%] md:flex-row flex flex-col justify-center items-center gap-[20px] py-[30px] px-[20px] object-top'>
                     <input type="text" placeholder='shorten a link here' 
-                    className='w-[90%] py-[10px] px-3 rounded-md' />
-                    <button className='py-[10px] md:w-[20%] w-[90%] bg-cyan-400 rounded-md'>Shorten it</button>
-                </div>
+                    className='w-[90%] py-[10px] px-3 rounded-md' value={input} onChange={(e)=>setInput(e.target.value)} />
+                    <button className='py-[10px] md:w-[20%] w-[90%] bg-cyan-400 rounded-md' onClick={fetchApi}>{isClick ? "pls wait ..." : "Shorten it"}</button>
+                </form>
             </div>
             <div className='md:hidden flex justify-center items-center gap-7 w-[100%] flex-col'>
-                {copy.map((cop, index)=>(
-                    <div className='bg-gray-300 flex flex-col gap-3 w-[90%] pr-[20px] pl-[20px] py-4'>
-                        <p className='text-black text-[25px] font-bold'>{cop.link1}</p>
-                        <p className='text-cyan-400 text-[25px] font-bold'>{cop.link2}</p>
-                        <button className='text-white bg-cyan-400 text-[20px] rounded-lg py-[10px] '>{cop.btn}</button>
-                    </div>
-                ))}
+                
             </div>
+            <p className='text-5xl text-red-500'><a href={url} target='_blank'>{url}</a></p>
+           
             <div className='flex flex-col bg-cyan-100 '>
                 <div className='flex flex-col items-center justify-center text-center  '>
                     <h2 className='font-bold text-3xl '>Advanced Statistics</h2>
@@ -68,11 +86,7 @@ const body = () => {
                 </div>
             </div>
     </div>
-
-
-    
-        
   )
 }
 
-export default body
+export default Body

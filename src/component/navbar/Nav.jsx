@@ -33,7 +33,7 @@ const Nav = () => {
           <p className='text-gray-500 cursor-pointer hover:text-black font-semibold ' >Pricing</p>
           <p className='text-gray-500 cursor-pointer hover:text-black font-semibold'>Resources</p>
       </div>
-     }
+}
     </div>
    
   )
