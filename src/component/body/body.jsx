@@ -54,7 +54,7 @@ const Body = () => {
             {/* <div className='md:hidden flex justify-center items-center gap-7 w-[100%] flex-col'>
                 
             </div> */}
-            <p className='md:text-5xl text-2xl text-red-500'><a href={url} target='_blank'>{url}</a></p>
+            <p className='md:text-3xl text-lg text-red-500 pr-[20px]'><a href={url} target='_blank'>{url}</a></p>
            
             <div className='flex flex-col bg-cyan-100 '>
                 <div className='flex flex-col items-center justify-center text-center  '>
