@@ -28,12 +28,12 @@ const Nav = () => {
                 </div>
             </div>
             {
-      <div className={`gap-[6px] text-[25px] right-0 absolute ${menu ? 'top-14': '-top-full'} py-[20px] bg-gray-100 w-[140px] rounded-b-xl text-center  transition-all duration-1000 ease-out hover:ease-in `}>
-          <p className=' text-gray-500 cursor-pointer hover:text-black font-semibold'>Features</p>
-          <p className='text-gray-500 cursor-pointer hover:text-black font-semibold ' >Pricing</p>
-          <p className='text-gray-500 cursor-pointer hover:text-black font-semibold'>Resources</p>
-      </div>
-}
+              <div className={`gap-[6px] text-[25px] right-0 absolute ${menu ? 'top-14': '-top-full'} py-[20px] bg-gray-100 w-[140px] rounded-b-xl text-center  transition-all duration-1000 ease-out hover:ease-in `}>
+                  <p className=' text-gray-500 cursor-pointer hover:text-black font-semibold'>Features</p>
+                  <p className='text-gray-500 cursor-pointer hover:text-black font-semibold ' >Pricing</p>
+                  <p className='text-gray-500 cursor-pointer hover:text-black font-semibold'>Resources</p>
+              </div>
+            }
     </div>
    
   )
